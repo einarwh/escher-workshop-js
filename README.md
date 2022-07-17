@@ -180,7 +180,7 @@ Calling `above(f, flip(f))` should yield the following (with bounding boxes outl
 
 <img src="files/above-f-flip-f-arrows.svg" width="200" height="200">
 
-> You can get the same outlining of boxes by passing a second `true` argument to the `createPicture` to turn on simplified visualization.
+> To enable the outlining of boxes, pass a second `true` argument to `createPicture` to turn on simplified visualization, e.g. `createPicture(letterF, true, true)`.
 
 This exercise requires quite a bit more work than the previous exercises, and really tests your understanding of the abstractions you're working with. (If you feel overwhelmed, frustrated or lost when attempting to solve this exercise, consider jumping ahead to the `exercise-4` branch which contains a solution. The rest of the workshop does not rely on a thorough understanding of the implementation of `above`. Make sure you get acquainted with the results of calling `above` and `aboveRatio` with various inputs though - that will be useful.)
 
