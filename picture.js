@@ -23,3 +23,14 @@ function flip(picture) {
     return picture(flippedBox); 
   };
 }
+
+function toss(picture) {
+  return (box) => {
+    const tossedBox = {
+      a: add(box.a, add(scale(0.5, box.b), scale(0.5, box.c))),
+      b: add(scale(0.5, box.b), scale(0.5, box.c)),
+      c: subtract(scale(0.5, box.c), scale(0.5, box.b))
+    };
+    return picture(tossedBox); 
+  };
+}
