@@ -4,7 +4,7 @@ function createRendering() {
     b: {x: 250, y: 0},
     c: {x: 0, y: 250}
   };
-  let fp = createPicture(fish, true, true);
-  let picture = over(fp, turn(turn(fp)));
+  let fp = createPicture(fish);
+  let picture = ttile(fp);
   return picture(box);
 }

@@ -120,3 +120,9 @@ function over(...ps) {
     return ps.reduce((acc, p) => acc.concat(p(box)), []);
   }
 }
+
+function ttile(p) {
+  const pn = flip(toss(p));
+  const pe = turn(turn(turn(pn)));
+  return over(p, pn, pe);
+}
