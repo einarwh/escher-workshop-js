@@ -12,3 +12,14 @@ function turn(picture) {
     return picture(turnedBox); 
   };
 }
+
+function flip(picture) {
+  return (box) => {
+    const flippedBox = {
+      a: add(box.a, box.b),
+      b: negate(box.b),
+      c: box.c
+    };
+    return picture(flippedBox); 
+  };
+}
