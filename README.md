@@ -130,7 +130,7 @@ If you find yourself struggling, don't worry! There are quite a few concepts to 
 
 When you have a working implementation of `turn`, you should observe that turning a picture twice rotates it 180 degrees, and turning it four times produces the original picture. And by _observe_ I mean _try it out to verify it_.
 
-(_Entirely optional advanced bonus exercise not needed to progress in this workshop_: If you are very comfortable with recursion and composition, create a helper function `times` that takes a number `n` and a single-parameter function `f` as parameters, and creates a new single-parameter function that applies `f` `n` times to the original parameter. For instance, assume you have a function `double` that doubles any number you give it. Now calling `times(2, double)(3)` should be tantamount to calling `double(double(3))`, yielding 12 as result, first by doubling 3 to 6 and then by doubling 6 to 12. Calling `times(0, double)(3)` should apply the double function 0 times, yielding 3. Use `times` to define a function `turns` that turns a picture the specified number of times.)
+> _Entirely optional advanced bonus exercise not needed to progress in this workshop_: If you are very comfortable with recursion and composition, create a helper function `times` that takes a number `n` and a single-parameter function `f` as parameters, and creates a new single-parameter function that applies `f` `n` times to the original parameter. For instance, assume you have a function `double` that doubles any number you give it. Now calling `times(2, double)(3)` should be tantamount to calling `double(double(3))`, yielding 12 as result, first by doubling 3 to 6 and then by doubling 6 to 12. Calling `times(0, double)(3)` should apply the double function 0 times, yielding 3. Use `times` to define a function `turns` that turns a picture the specified number of times.
 
 ### Exercise 2 : flip
 
@@ -166,7 +166,7 @@ You don't have to work out the vector arithmetic yourself this time:
 (a’, b’, c’) = (a + (b + c) / 2, (b + c) / 2, (c − b) / 2)
 ```
 
-(Tip: recall that dividing by two is the same as multiplying by half, and that `scale` does scalar multiplication of vectors.)
+> Tip: recall that dividing by two is the same as multiplying by half, and that `scale` does scalar multiplication of vectors.
 
 Whee! High up in the air!
 
@@ -208,9 +208,9 @@ What happens if you render `beside(f, beside(turn(f), turn(turn(f)))))`? How wou
 
 Can you turn the composite picture you just made? 
 
-(_Optional bonus exercise_: Speaking of turning: you probably implemented `besideRatio` by manipulating boxes, just like you did for `aboveRatio` in Exercise 4 - right? Try to implement it by calling `aboveRatio` and `turn` instead.)
+> _Optional bonus exercise_: Speaking of turning: you probably implemented `besideRatio` by manipulating boxes, just like you did for `aboveRatio` in Exercise 4 - right? Try to implement it by calling `aboveRatio` and `turn` instead.
 
-(_Optional bonus exercise#2_: Can you define a function `row` that composes any number of picture into a single picture by placing them beside each other, giving each picture an equal amount of space? Similarly, can you define a function `column` that puts the picture above each other?)
+> _Optional bonus exercise #2_: Can you define a function `row` that composes any number of picture into a single picture by placing them beside each other, giving each picture an equal amount of space? Similarly, can you define a function `column` that puts the picture above each other?
 
 
 ### Exercise 6 : quartet
