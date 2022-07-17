@@ -108,3 +108,15 @@ function zoom(depth, nw, nm, ne, mw, mm, me, sw, sm, se) {
   }
   return fn(depth);
 }
+
+// function over(p1, p2) {
+//   return (box) => {
+//     p1(box).concat(p2(box));
+//   }
+// }
+
+function over(...ps) {
+  return (box) => {
+    return ps.reduce((acc, p) => acc.concat(p(box)), []);
+  }
+}
