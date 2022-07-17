@@ -5,6 +5,6 @@ function createRendering() {
     c: {x: 0, y: 250}
   };
   let fp = createPicture(fish);
-  let picture = utile(fp);
+  let picture = side(3, fp);
   return picture(box);
 }

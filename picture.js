@@ -134,3 +134,14 @@ function utile(p) {
   const pe = turn(ps);
   return over(pn, pw, ps, pe);
 }
+
+function side(n, p) {
+  if (n < 1) {
+    return blank;
+  }
+  else {
+    const s = side(n - 1, p);
+    const t = ttile(p);
+    return quartet(s, s, turn(t), t);
+  }
+}
