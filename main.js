@@ -5,6 +5,6 @@ function createRendering() {
     c: {x: 0, y: 250}
   };
   let fp = createPicture(fish);
-  let picture = corner(3, fp);
+  let picture = squareLimit(3, fp);
   return picture(box);
 }

@@ -157,3 +157,16 @@ function corner(n, p) {
     return quartet(c, s, turn(s), u);
   }
 }
+
+function squareLimit(n, p) {
+  let nw = corner(n, p);
+  let sw = turn(nw);
+  let se = turn(sw);
+  let ne = turn(se);
+  let nm = side(n, p);
+  let mw = turn(nm);
+  let sm = turn(mw);
+  let me = turn(sm);
+  let mm = utile(p);
+  return nonet(nw, nm, ne, mw, mm, me, sw, sm, se);
+}
