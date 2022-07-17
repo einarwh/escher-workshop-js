@@ -5,6 +5,6 @@ function createRendering() {
     c: {x: 0, y: 250}
   };
   let f = createPicture(letterF);
-  let picture = above(f, flip(f));
+  let picture = besideRatio(3, 5, f, flip(f));
   return picture(box);
 }

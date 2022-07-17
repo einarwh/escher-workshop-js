@@ -62,3 +62,31 @@ function aboveRatio(m, n, p1, p2) {
 function above(p1, p2) {
   return aboveRatio(1, 1, p1, p2);
 }
+
+function besideRatio(m, n, p1, p2) {
+  function moveBox(f, box) {
+    return {
+      a: add(box.a, scale(f, box.b)),
+      b: box.b,
+      c: box.c
+    };
+  }
+  function scaleBox(f, box) {
+    return {
+      a: box.a,
+      b: scale(f, box.b),
+      c: box.c
+    };
+  }
+  return (box) => {
+    const f = m / (m + n);
+    const g = 1 - f;
+    const left = scaleBox(f, box);
+    const right = scaleBox(g, moveBox(f, box));
+    return p1(left).concat(p2(right));  
+  };
+}
+
+function beside(p1, p2) {
+  return besideRatio(1, 1, p1, p2);
+}
