@@ -130,7 +130,7 @@ If you find yourself struggling, don't worry! There are quite a few concepts to 
 
 When you have a working implementation of `turn`, you should observe that turning a picture twice rotates it 180 degrees, and turning it four times produces the original picture. And by _observe_ I mean _try it out to verify it_.
 
-(_Entirely optional advanced bonus exercise not needed to progress in this workshop_: If you are very comfortable with recursion and composition, create a helper function `times` that takes a number `n` and a single-parameter function `f` as parameters, and creates a new single-parameter function that applies `f` `n` times. For instance, assume you have `function double = (x) => { return x + x; }`. Now calling `times(2, double)(3)` should be tantamount to calling `double(double(3))`, both yielding 12 as result. Calling `times(0, double)(3)` should apply the double function 0 times, yielding 3. Use `times` to define a function `turns` that turns a picture the specified number of times.)
+(_Entirely optional advanced bonus exercise not needed to progress in this workshop_: If you are very comfortable with recursion and composition, create a helper function `times` that takes a number `n` and a single-parameter function `f` as parameters, and creates a new single-parameter function that applies `f` `n` times to the original parameter. For instance, assume you have a function `double` that doubles any number you give it. Now calling `times(2, double)(3)` should be tantamount to calling `double(double(3))`, yielding 12 as result, first by doubling 3 to 6 and then by doubling 6 to 12. Calling `times(0, double)(3)` should apply the double function 0 times, yielding 3. Use `times` to define a function `turns` that turns a picture the specified number of times.)
 
 ### Exercise 2 : flip
 
@@ -176,9 +176,11 @@ Now we'll start combining pictures to create more complex, composite pictures.
 
 Define a function `above`, which takes two pictures `p1` and `p2` as parameters. It should produce a new picture which fills the upper half of the bounding box with `p1` and the lower half with `p2`.
 
-Calling `above(f, flip (f))` should yield the following (with bounding boxes outlined for clarity):
+Calling `above(f, flip(f))` should yield the following (with bounding boxes outlined for clarity):
 
 <img src="files/above-f-flip-f-arrows.svg" width="200" height="200">
+
+> You can get the same outlining of boxes by passing a second `true` argument to the `createPicture` to turn on simplified visualization.
 
 This exercise requires quite a bit more work than the previous exercises, and really tests your understanding of the abstractions you're working with. (If you feel overwhelmed, frustrated or lost when attempting to solve this exercise, consider jumping ahead to the `exercise-4` branch which contains a solution. The rest of the workshop does not rely on a thorough understanding of the implementation of `above`. Make sure you get acquainted with the results of calling `above` and `aboveRatio` with various inputs though - that will be useful.)
 

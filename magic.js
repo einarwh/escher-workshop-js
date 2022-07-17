@@ -19,7 +19,7 @@ function createBoxShapes(box, simple) {
   function getDottedStyle() {
     return {
       'stroke-width': '1',
-      'stroke-dasharray': '1',
+      'stroke-dasharray': '2',
       'stroke': 'grey',
       'fill': 'none'
     };
