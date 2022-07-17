@@ -145,3 +145,15 @@ function side(n, p) {
     return quartet(s, s, turn(t), t);
   }
 }
+
+function corner(n, p) {
+  if (n < 1) {
+    return blank;
+  }
+  else {
+    const c = corner(n - 1, p);
+    const s = side(n - 1, p);
+    const u = utile(p);
+    return quartet(c, s, turn(s), u);
+  }
+}
