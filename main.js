@@ -12,5 +12,6 @@ function createRendering() {
   let s = createPicture(letterS);
   let o = createPicture(letterO);
   let picture = nonet(h, e, n, d, e, r, s, o, n);
+  // let picture = zoom(3, h, e, n, d, e, r, s, o, n); 
   return picture(box);
 }

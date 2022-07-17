@@ -101,3 +101,10 @@ function nonet(nw, nm, ne, mw, mm, me, sw, sm, se) {
   let botRow = besideRatio(1, 2, sw, beside(sm, se));
   return aboveRatio(1, 2, topRow, above(midRow, botRow));
 }
+
+function zoom(depth, nw, nm, ne, mw, mm, me, sw, sm, se) {
+  function fn(n) {
+    return n == 0 ? mm : nonet(nw, nm, ne, mw, fn(n - 1), me, sw, sm, se);
+  }
+  return fn(depth);
+}
