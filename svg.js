@@ -40,6 +40,25 @@ function createPolyline(points) {
   };
 }
 
+function createLine(startPoint, endPoint) {
+    return {
+      transpose: (mapper) => {
+        return createLine(mapper(startPoint), mapper(endPoint));
+      },
+      toSvgElement: (style) => {
+        const el = createSvgElement("line");
+        el.setAttribute("x1", startPoint.x);
+        el.setAttribute("y1", startPoint.y);
+        el.setAttribute("x2", endPoint.x);
+        el.setAttribute("y2", endPoint.y);
+        for (const prop in style) {
+          el.setAttribute(prop, style[prop]);
+        }
+        return el;
+      },
+    };
+  }
+  
 function createMoveToCommand(point) {
   return {
     transpose: (mapper) => {
@@ -58,6 +77,17 @@ function createCurveToCommand(cp1, cp2, ep) {
     },
     toString: () => {
       return `C ${cp1.x} ${cp1.y}, ${cp2.x} ${cp2.y}, ${ep.x} ${ep.y}`;
+    },
+  };
+}
+
+function createLineToCommand(point) {
+  return {
+    transpose: (mapper) => {
+      return createLineToCommand(mapper(point));
+    },
+    toString: () => {
+        return `L ${point.x} ${point.y}`;
     },
   };
 }
@@ -81,9 +111,13 @@ function C(x1, y1, x2, y2, x3, y3) {
   return createCurveToCommand(
     createPoint(x1, y1),
     createPoint(x2, y2),
-    createPoint(x3, y3)
-  );
+    createPoint(x3, y3));
 }
+
+function L(x, y) {
+    return createLineToCommand(
+      createPoint(x, y));
+  }
 
 function Z() {
   return createCloseCommand();

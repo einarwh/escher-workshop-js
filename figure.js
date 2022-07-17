@@ -2,7 +2,7 @@ function createPoint(x, y) {
   return { x: x, y: y };
 }
 
-function george() {
+const george = (function () {
   let pts1 = [
     createPoint(0.0, 0.55),
     createPoint(0.15, 0.45),
@@ -43,4 +43,4 @@ function george() {
   let all = [pts1, pts2, pts3, pts4, pts5];
 
   return all.map(createPolyline);
-}
+})();

@@ -7,25 +7,67 @@ function createMagicMapper(box) {
   };
 }
 
-function createPicture(shapes) {  
+function createBoxShapes(box, simple) {
+  function getArrowStyle(id, color) {
+    return {
+      'stroke-width': '1',
+      'stroke': color,
+      'fill': 'none',
+      'marker-end': `url(#${id})`
+    };
+  }
+  function getDottedStyle() {
+    return {
+      'stroke-width': '1',
+      'stroke-dasharray': '1',
+      'stroke': 'grey',
+      'fill': 'none'
+    };
+  }
+  const a = box.a;
+  const b = box.b;
+  const c = box.c;
+  let origin = {x: 0, y: 0};
+  let bottomLeft = a;
+  let bottomRight = add(a, b);
+  let topLeft = add(a, c);
+  let topRight = add(bottomRight, c);
+  const aLine = createLine(origin, bottomLeft);
+  const bLine = createLine(bottomLeft, bottomRight);
+  const cLine = createLine(bottomLeft, topLeft);
+  const dLine = createLine(topLeft, topRight);
+  const eLine = createLine(bottomRight, topRight);
+  if (simple) {
+    const bStyled = { style: getDottedStyle(), shape: bLine };
+    const cStyled = { style: getDottedStyle(), shape: cLine };
+    const dStyled = { style: getDottedStyle(), shape: dLine };
+    const eStyled = { style: getDottedStyle(), shape: eLine };
+    return [ bStyled, cStyled, dStyled, eStyled ];  
+  }
+  else {
+    const aStyled = { style: getArrowStyle('a-arrow', 'red'), shape: aLine };
+    const bStyled = { style: getArrowStyle('b-arrow', 'orange'), shape: bLine };
+    const cStyled = { style: getArrowStyle('c-arrow', 'purple'), shape: cLine };
+    const dStyled = { style: getDottedStyle(), shape: dLine };
+    const eStyled = { style: getDottedStyle(), shape: eLine };
+    return [ aStyled, bStyled, cStyled, dStyled, eStyled ];  
+  }
+}
+
+function createPicture(shapes, drawBox = false, simple = false) {  
   return (box) => {
     let mapper = createMagicMapper(box);
-    console.log(box);
-    console.log(magnitude(box.b)); 
     let s = Math.max(magnitude(box.b), magnitude(box.c));
-
     let sw = Math.sqrt(s / 50.0);
-    //let sw = s / 50.0;
     let style = {
       'stroke-width': sw,
       'stroke': 'black',
       'fill': 'none'
     };
-    console.log(shapes);
     let styled = shapes.map((s) => {
       return { style: style, shape: s.transpose(mapper) };
     });
-    console.log(styled);
-    return styled;
+    boxShapes = drawBox ? createBoxShapes(box, simple) : [];
+    return styled.concat(boxShapes);
   };
 }

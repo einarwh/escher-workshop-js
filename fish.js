@@ -1,4 +1,4 @@
-function fish() {
+const fish = (function() {
   let paths = [
     // spine
     createPath(M(0.116, 0.702), C(0.26, 0.295, 0.33, 0.258, 0.815, 0.078)),
@@ -57,4 +57,4 @@ function fish() {
   ];
 
   return paths;
-}
+})();

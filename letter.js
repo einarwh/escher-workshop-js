@@ -2,7 +2,7 @@ function createPoint(x, y) {
   return { x: x, y: y };
 }
 
-function fLetter() {
+const letterF = (function () {
   let points = [
     createPoint(0.3, 0.2),
     createPoint(0.4, 0.2),
@@ -16,9 +16,9 @@ function fLetter() {
     createPoint(0.3, 0.8),
   ];
   return [createPolygon(points)];
-}
+})();
 
-function hLetter() {
+const letterH = (function () {
   let points = [
     createPoint(0.3, 0.2),
     createPoint(0.4, 0.2),
@@ -34,9 +34,9 @@ function hLetter() {
     createPoint(0.3, 0.8),
   ];
   return [createPolygon(points)];
-}
+})();
 
-function eLetter() {
+const letterE = (function() {
   let points = [
     createPoint(0.3, 0.2),
     createPoint(0.7, 0.2),
@@ -52,9 +52,9 @@ function eLetter() {
     createPoint(0.3, 0.8),
   ];
   return [createPolygon(points)];
-}
+})();
 
-function nLetter() {
+const letterN = (function () {
   let points = [
     createPoint(0.3, 0.2),
     createPoint(0.4, 0.2),
@@ -68,9 +68,9 @@ function nLetter() {
     createPoint(0.3, 0.8),
   ];
   return [createPolygon(points)];
-}
+})();
 
-function dLetter() {
+const letterD = (function () {
   let pts1 = [
     createPoint(0.3, 0.2),
     createPoint(0.55, 0.2),
@@ -89,9 +89,9 @@ function dLetter() {
   ];
   let all = [pts1, pts2];
   return all.map(createPolygon);
-}
+})();
 
-function rLetter() {
+const letterR = (function () {
   let pts1 = [
     createPoint(0.3, 0.2),
     createPoint(0.4, 0.2),
@@ -112,9 +112,9 @@ function rLetter() {
   ];
   let all = [pts1, pts2];
   return all.map(createPolygon);
-}
+})();
 
-function sLetter() {
+const letterS = (function () {
   let points = [
     createPoint(0.3, 0.2),
     createPoint(0.7, 0.2),
@@ -130,9 +130,9 @@ function sLetter() {
     createPoint(0.3, 0.3),
   ];
   return [createPolygon(points)];
-}
+})();
 
-function oLetter() {
+const letterO = (function () {
   let pts1 = [
     createPoint(0.3, 0.2),
     createPoint(0.7, 0.2),
@@ -147,4 +147,4 @@ function oLetter() {
   ];
   let all = [pts1, pts2];
   return all.map(createPolygon);
-}
+})();
