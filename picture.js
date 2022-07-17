@@ -90,3 +90,7 @@ function besideRatio(m, n, p1, p2) {
 function beside(p1, p2) {
   return besideRatio(1, 1, p1, p2);
 }
+
+function quartet(nw, ne, sw, se) {
+  return above(beside(nw, ne || nw), beside(sw || nw, se || nw));
+}

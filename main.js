@@ -4,7 +4,11 @@ function createRendering() {
     b: {x: 250, y: 0},
     c: {x: 0, y: 250}
   };
-  let f = createPicture(letterF);
-  let picture = besideRatio(3, 5, f, flip(f));
+  let nw = createPicture(george);
+  let ne = turn(turn(flip(nw)));
+  let sw = turn(turn(nw));
+  let se = flip(nw);
+  let q = quartet(nw, ne, sw, se);
+  let picture = quartet(quartet(q, blank, blank, q));
   return picture(box);
 }
