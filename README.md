@@ -237,7 +237,7 @@ Test your function by creating the following image:
 
 <img src="files/name-nonet.svg" width="200" height="200">
 
-You'll find the letters you need defined in `letter.js`. You turn the letters into pictures by passing them to `createPicture`.
+You'll find the letters you need defined in `shapes.js`. You turn the letters into pictures by passing them to `createPicture`.
 
 Again, a nonet is just a picture, which can be used to create more complex pictures (including nonets). See if you can create the following picture:
 
@@ -247,7 +247,7 @@ Abstractions that compose are a wonderful thing.
 
 ### Pause for fish
 
-At this point, let's introduce Escher's fish! (My version of Henderson's version of it, anyway.) The shape of the fish is defined in `fish.js`. You can turn the shape into a proper fish picture by calling `createPicture(fish)`.
+At this point, let's introduce Escher's fish! (My version of Henderson's version of it, anyway.) The shape of the fish is defined in `shapes.js`. You can turn the shape into a proper fish picture by calling `createPicture(fish)`.
 
 If you pass it a suitable bounding box, the fish should render like this:
 
