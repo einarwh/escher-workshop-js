@@ -4,11 +4,13 @@ function createRendering() {
     b: {x: 250, y: 0},
     c: {x: 0, y: 250}
   };
-  let nw = createPicture(george);
-  let ne = turn(turn(flip(nw)));
-  let sw = turn(turn(nw));
-  let se = flip(nw);
-  let q = quartet(nw, ne, sw, se);
-  let picture = quartet(quartet(q, blank, blank, q));
+  let h = createPicture(letterH);
+  let e = createPicture(letterE);
+  let n = createPicture(letterN);
+  let d = createPicture(letterD);
+  let r = createPicture(letterR);
+  let s = createPicture(letterS);
+  let o = createPicture(letterO);
+  let picture = nonet(h, e, n, d, e, r, s, o, n);
   return picture(box);
 }

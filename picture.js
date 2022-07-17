@@ -94,3 +94,10 @@ function beside(p1, p2) {
 function quartet(nw, ne, sw, se) {
   return above(beside(nw, ne || nw), beside(sw || nw, se || nw));
 }
+
+function nonet(nw, nm, ne, mw, mm, me, sw, sm, se) {
+  let topRow = besideRatio(1, 2, nw, beside(nm, ne));
+  let midRow = besideRatio(1, 2, mw, beside(mm, me));
+  let botRow = besideRatio(1, 2, sw, beside(sm, se));
+  return aboveRatio(1, 2, topRow, above(midRow, botRow));
+}
