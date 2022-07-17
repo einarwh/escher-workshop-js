@@ -4,6 +4,7 @@ function createRendering() {
     b: {x: 250, y: 0},
     c: {x: 0, y: 250}
   };
-  let picture = toss(createPicture(letterF));
+  let f = createPicture(letterF);
+  let picture = above(f, flip(f));
   return picture(box);
 }

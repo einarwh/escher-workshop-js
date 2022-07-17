@@ -34,3 +34,31 @@ function toss(picture) {
     return picture(tossedBox); 
   };
 }
+
+function aboveRatio(m, n, p1, p2) {
+  function moveBox(f, box) {
+    return {
+      a: add(box.a, scale(f, box.c)),
+      b: box.b,
+      c: box.c
+    };
+  }
+  function scaleBox(f, box) {
+    return {
+      a: box.a,
+      b: box.b,
+      c: scale(f, box.c)
+    };
+  }
+  return (box) => {
+    const f = m / (m + n);
+    const g = 1 - f;
+    const top = scaleBox(f, moveBox(g, box));
+    const bot = scaleBox(g, box);
+    return p1(top).concat(p2(bot));  
+  };
+}
+
+function above(p1, p2) {
+  return aboveRatio(1, 1, p1, p2);
+}
