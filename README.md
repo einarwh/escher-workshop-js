@@ -16,7 +16,7 @@ You should start by cloning this repo, like so:
 git clone https://github.com/einarwh/escher-workshop-js
 ````
 
-You're not starting from scratch, the repo contains a number of `.js` files. Most of them you can safely ignore in this workshop. But some of them you'll become familiar with. 
+You're not starting from scratch, the repo contains a number of `.js` files. Most of them you can safely ignore in this workshop. But a few of them you'll become familiar with, in particular `picture.js` and `main.js`. 
 
 First though, you should verify that everything works. If you open the file `index.html` in a browser, you should see something that looks like this:
 
@@ -45,28 +45,32 @@ The letter F has been replaced with a stickman called George, stolen from the [S
 At this point, you probably have questions! Here are some answers, that may or may not fit those questions. First, `letterF` and `george` are shapes, mere data. More interestingly, `createPicture` is a function that creates a picture out of a shape. And most interestingly, a picture is also a function (!) - from a bounding box to an SVG rendering. This makes a picture somewhat magical, in that it can produce a bunch of different renderings, based on the box you give it.
 
 Initially, the box looks like this: 
+
 ```
-box = { a = { x = 125.0, y = 75.0 }
-      , b = { x = 250.0, y = 0.0 }
-      , c = { x = 0.0, y = 250.0 } }
+let box = { 
+    a: {x: 125, y: 75},
+    b: {x: 250, y: 0},
+    c: {x: 0, y: 250}
+  };
 ```
+
 Which outlines a nice square box for George to live in. 
 
 Try to change some of the numbers. Mess around with the bounding box passed to George and see what happens. He has no choice but to stretch and contract to fit the box! Poor ol' George! Here he is all thin and skewed and weird: 
 
 <img src="files/figure-george-skewed.svg" width="200" height="200">
 
-Let's return to the rendering of the letter F, and try to understand what happens a little bit better. Adding some visual aids for the bounding box should help.
-
-<img src="files/letter-f-arrows.svg" width="199" height="199">
-
-By default, the visual aids are switched off, but you can switch them on by passing in `true` as a second argument to the `createPicture` function, like this: 
+Let's return to the rendering of the letter F, and try to understand what happens a little bit better. Adding some visual aids for the bounding box should help. By default, the visual aids are switched off, but you can switch them on by passing in `true` as a second argument to the `createPicture` function, like this: 
 
 ```
 let picture = createPicture(letterF, true);
 ```
 
-As you can see, a box is defined by three vectors: `a`, `b` and `c`. The red arrow is the `a` vector, which points from the origin (0, 0) to the bottom left corner of the box. The orange arrow is the `b` vector, which points from the bottom left corner to the bottom right corner, and spans out the box horizontally. The purple arrow is the `c` vector and points from the bottom left corner to the top left corner, and spans it out vertically. (What about the top right corner? It is implicitly defined by vectors `b` and `c` - you can get there from the bottom left corner if you follow `b` and then `c` or vice versa.)
+You should see a rendering similar to this:
+
+<img src="files/letter-f-arrows.svg" width="199" height="199">
+
+A box is defined by three vectors: `a`, `b` and `c`. The red arrow is the `a` vector, which points from the origin (0, 0) to the bottom left corner of the box. The orange arrow is the `b` vector, which points from the bottom left corner to the bottom right corner, and spans out the box horizontally. The purple arrow is the `c` vector and points from the bottom left corner to the top left corner, and spans it out vertically. (What about the top right corner? It is implicitly defined by vectors `b` and `c` - you can get there from the bottom left corner if you follow `b` and then `c` or vice versa.)
 
 Speaking of vectors: you might want to take a look at `vector.js`. A vector has two dimensions, `x` and `y`. You can add vectors together (by adding up the `x` and `y` dimensions separately), negate a vector (effectively have it pointing the other way) and subtract a vector from another. You can also scale a vector by some factor; a factor of 2 doubles it, a factor of 0.5 makes it half as long. And finally you can calculate the vector's magnitude or length. 
 
@@ -74,7 +78,7 @@ And that's about it for theory. Do you feel ready? You are ready. It's time to s
 
 ## Exercises
 
-You will start by defining a number of simple picture transformations; functions that take a picture as parameter and produces another picture as result.
+You will start by defining a number of simple picture transformations; functions that take a picture as parameter and produces another picture as result. Since a picture in itself is a function from a box to a rendering, each picture transformation is a _higher order function_. It accepts a function as a parameter and returns a function as a result.
 
 ### Exercise 1 : turn
 
@@ -105,7 +109,7 @@ function turn(picture) {
 } 
 ```
 
-Note: The syntax `(box) => { ... }` creates an anonymous picture function as the result of the `turn` function. Since all the picture transformations need to return a picture, you'll be creating many such anonymous functions.
+> The syntax `(box) => { ... }` creates an anonymous picture function as the result of the `turn` function. Since all the picture transformations need to return a picture, you'll be creating such anonymous functions for each transformation. Treating functions like data in this way is what makes the picture transformations higher order functions.
 
 That's the basic skeleton in place. But how do you turn the box? Well, first off, you don't really turn the box. That is, you don't mutate the box you're given. You create _another_ box that is turned when compared to the original. You'll want the `a` vector of the new box to point to the bottom right corner of the original box. (You can create that vector by adding the original `a` vector and the original `b` vector together.) The `b` vector needs to point straight up, just like the original `c` vector. And finally, the `c` vector should point to the left, in the exact opposite direction as the original `b` vector.
 
