@@ -126,3 +126,11 @@ function ttile(p) {
   const pe = turn(turn(turn(pn)));
   return over(p, pn, pe);
 }
+
+function utile(p) {
+  const pn = flip(toss(p));
+  const pw = turn(pn);
+  const ps = turn(pw);
+  const pe = turn(ps);
+  return over(pn, pw, ps, pe);
+}
