@@ -4,6 +4,6 @@ function createRendering() {
     b: {x: 250, y: 0},
     c: {x: 0, y: 250}
   };
-  let picture = turn(createPicture(letterF));
+  let picture = createPicture(letterF);
   return picture(box);
 }
