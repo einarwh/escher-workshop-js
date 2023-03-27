@@ -1,4 +1,4 @@
-function createRendering() {
+function createRendering() {
   let box = { 
     a: {x: 125, y: 75},
     b: {x: 250, y: 0},
