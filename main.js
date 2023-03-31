@@ -4,6 +4,10 @@ function createRendering() {
     b: {x: 250, y: 0},
     c: {x: 0, y: 250}
   };
-  let picture = createPicture(letterF);
+  let g = createPicture(george);
+  let f = createPicture(fish);
+
+  let picture = quartet(tunnel(10, f));
+
   return picture(box);
 }
